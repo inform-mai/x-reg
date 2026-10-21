@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.db.models import Base
-from app.config import get_settings
+from Backend.app.db.models import Base
+from Backend.app.config import get_settings
 
 
 _engine = None

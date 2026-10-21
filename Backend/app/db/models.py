@@ -8,6 +8,7 @@ from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, Integer, String, Tex
 def utc_now():
     return datetime.now(timezone.utc)
 
+
 class Base(DeclarativeBase):
     pass
 

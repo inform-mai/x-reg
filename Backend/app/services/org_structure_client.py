@@ -1,4 +1,4 @@
-from app.api.schemas import OrgSnapshotResponse
+from Backend.app.api.schemas import OrgSnapshotResponse
 
 
 class OrgStructureClientError(RuntimeError):

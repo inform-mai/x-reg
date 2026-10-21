@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from sqlalchemy import func, select, true
 from sqlalchemy.orm import joinedload, selectinload
 
-from app.db.models import (
+from Backend.app.db.models import (
     AccessStatus,
     Blacklist,
     Department,

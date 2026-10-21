@@ -1,5 +1,5 @@
-from app.db.models import AccessStatus, Employee, Report, ReportAction, ReportMode
-from app.api.schemas import EmployeeRead, ReportDetails, ReportItemRead, ReportRead
+from Backend.app.db.models import AccessStatus, Employee, Report, ReportAction, ReportMode
+from Backend.app.api.schemas import EmployeeRead, ReportDetails, ReportItemRead, ReportRead
 
 
 ACCESS_STATUS_TITLES = {

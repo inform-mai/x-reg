@@ -1,4 +1,4 @@
-from app.db.models import Report, ReportAction
+from Backend.app.db.models import Report, ReportAction
 
 import io
 from pathlib import Path
