@@ -21,14 +21,10 @@ MODE_LABELS = {
 }
 
 
-class PdfRenderError(RuntimeError):
-    pass
-
 class PdfReportRenderer:
     def __init__(self):
         font_path = Path(__file__).parent / 'fonts' / 'DejaVuSans.ttf'
         pdfmetrics.registerFont(TTFont('DejaVu', str(font_path)))
-
 
     def render(self, report: Report) -> bytes:
         buffer = io.BytesIO()
@@ -42,22 +38,18 @@ class PdfReportRenderer:
         story = []
         styles = getSampleStyleSheet()
 
-
         left_style = ParagraphStyle('RightHeader', parent=styles['Normal'], fontSize=10, alignment=2, fontName='DejaVu')
         story.append(Paragraph("Приложение №1", left_style))
         story.append(Spacer(1, 20))
-
 
         table_data = self._get_table_data(report)
         table = Table(table_data, colWidths=[110, 110, 115, 115, 115])
         table.setStyle(self._get_table_style())
         story.append(table)
 
-
         doc.build(story, onFirstPage=self._draw_page_number, onLaterPages=self._draw_page_number)
 
         return buffer.getvalue()
-
 
     def _get_table_data(self, report: Report):
         styles = getSampleStyleSheet()
@@ -81,7 +73,6 @@ class PdfReportRenderer:
             ])
         return data
 
-
     def _get_table_style(self):
         return TableStyle([
             ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#D3D3D3')),
@@ -96,7 +87,6 @@ class PdfReportRenderer:
             ('ROWHEIGHT', (0, 0), (-1, -1), None),
             ('SPLIT_BY_ROW', (0, 0), (-1, -1), True)
         ])
-
 
     def _draw_page_number(self, canvas, doc):
         canvas.saveState()

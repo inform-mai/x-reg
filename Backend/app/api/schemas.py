@@ -5,7 +5,6 @@ from pydantic import BaseModel, Field
 from Backend.app.db.models import AccessStatus, ReportAction, ReportMode
 
 
-
 class EmployeeRead(BaseModel):
     id: str = Field(description="Employee login", examples=["i.ivanov"])
     full_name: str = Field(description="Employee full name", examples=["Иванов Иван Иванович"])

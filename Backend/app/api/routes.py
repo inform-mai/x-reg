@@ -6,13 +6,12 @@ from fastapi.responses import StreamingResponse
 
 from Backend.app.db.session import get_session
 from Backend.app.api.deps import get_current_user
-from Backend.app.services.pdf import PdfRenderError
 from Backend.app.db.models import AccessStatus, User
 from Backend.app.config import Settings, get_settings
 from Backend.app.services.reports import ReportService
 from Backend.app.db.repo import EmployeeRepo, ReportRepo
 from Backend.app.services.org_structure import OrgStructureSyncService
-from Backend.app.services.org_structure_client import OrgStructureClient, OrgStructureClientError
+from Backend.app.services.org_structure_client import OrgStructureClient
 from Backend.app.api.mappers import employee_to_schema, report_to_details, report_to_schema
 from Backend.app.api.schemas import (
     BlacklistRequest,
@@ -22,6 +21,14 @@ from Backend.app.api.schemas import (
     ReportDetails,
     ReportRead,
     SyncResult,
+)
+from Backend.app.services.errors import (
+    PdfRenderError,
+    OrgStructureClientError,
+    NotFoundError,
+    ForbiddenError,
+    ValidationError,
+    NotImplementedError
 )
 
 
@@ -52,7 +59,7 @@ def blacklist_employee(
     repo = EmployeeRepo(db)
     employee = repo.get(employee_id)
     if employee is None:
-        raise HTTPException(status_code=404, detail="Employee not found")
+        raise NotFoundError("Employee not found")
 
     repo.set_blacklisted(employee, current_user.id, payload.reason)
     db.commit()
@@ -68,7 +75,7 @@ def restore_employee(
     repo = EmployeeRepo(db)
     employee = repo.get(employee_id)
     if employee is None:
-        raise HTTPException(status_code=404, detail="Employee not found")
+        raise NotFoundError("Employee not found")
 
     repo.restore_from_blacklist(employee)
     db.commit()
@@ -93,7 +100,7 @@ def sync_from_org_structure(
     try:
         snapshot = OrgStructureClient(settings).fetch_snapshot()
     except OrgStructureClientError as ex:
-        raise HTTPException(status_code=503, detail=str(ex)) from ex
+        raise OrgStructureClientError(str(ex)) from ex
     return OrgStructureSyncService(db).apply_snapshot(snapshot.employees)
 
 
@@ -124,7 +131,7 @@ def get_report(
 ) -> ReportDetails:
     report = ReportRepo(db).get_with_items(report_id)
     if report is None:
-        raise HTTPException(status_code=404, detail="Report not found")
+        raise NotFoundError("Report not found")
     return report_to_details(report)
 
 
@@ -136,11 +143,11 @@ def download_report(
 ) -> StreamingResponse:
     report = ReportRepo(db).get_with_items(report_id)
     if report is None:
-        raise HTTPException(status_code=404, detail="Report not found")
+        raise NotFoundError("Report not found")
     try:
         content = ReportService(db).render_pdf(report)
     except PdfRenderError as ex:
-        raise HTTPException(status_code=503, detail=str(ex)) from ex
+        raise PdfRenderError(str(ex)) from ex
     safe_filename = quote(report.file_name.encode('utf-8'))
 
     return StreamingResponse(

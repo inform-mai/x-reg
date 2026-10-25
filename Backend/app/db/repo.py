@@ -41,7 +41,7 @@ class EmployeeRepo:
     def __init__(self, db):
         self.db = db
 
-    def list(self, status = None, q = None):
+    def list(self, status=None, q=None):
         query = select(Employee).options(joinedload(Employee.department)).order_by(Employee.full_name)
         if status is not None:
             query = query.where(Employee.access_status == status)
