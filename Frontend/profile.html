@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет - x-reg</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/access.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main>
+    <!-- инфа о пользователе -->
+    <div class="profile-card">
+      <h1>Личный кабинет</h1>
+      <div class="user-info">
+        <p><strong>ФИО:</strong> <span id="user-name">Админ</span></p>
+        <p><strong>Логин:</strong> <span id="user-email">admin</span></p>
+        <p><strong>Роль:</strong> Сотрудник отдела кадров</p>
+        <p><strong>Статус:</strong> <span style="color: green;">Активен</span></p>
+      </div>
+    </div>
+    <!-- имитация формы настроек -->
+    <div class="profile-card" style="margin-top: 20px;">
+      <h2>Безопасность</h2>
+      <form id="change-password-form">
+        <div style="margin-bottom: 10px;">
+          <label>Текущий пароль:</label><br>
+          <input type="password" placeholder="********" required>
+        </div>
+        <div style="margin-bottom: 10px;">
+          <label>Новый пароль:</label><br>
+          <input type="password" placeholder="********" required>
+        </div>
+        <button type="submit">Изменить пароль</button>
+      </form>
+    </div>
+  </main>
+  <script src="js/common.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
