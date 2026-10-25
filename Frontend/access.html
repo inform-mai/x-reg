@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Списки сотрудников - x-reg</title>
+    <!--пустые стили-->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/access.css">
+</head>
+<body>
+    <div id="header-placeholder"></div> <!-- шапка от джаваскрипта-->
+    <main>
+    <h1>Списки сотрудников</h1>
+    <div>
+      <button class="btn-download">Скачать</button>
+    </div>
+    <div class="filters">
+      <button class="filter-btn active">Все</button>
+      <button class="filter-btn">Актуальная УЗ</button>
+      <button class="filter-btn">Прием</button>
+      <button class="filter-btn">Отзыв</button>
+      <button class="filter-btn">Отозвана</button>
+      <button class="filter-btn">Исключен</button>
+    </div>
+    <input type="text" placeholder="Поиск">
+    <table>
+      <thead>
+        <tr>
+          <th>ФИО</th>
+          <th>Должность</th>
+          <th>Отдел</th>
+          <th>Телефон</th>
+          <th>E-mail</th>
+          <th>Учетная запись</th>
+          <th>Доступ</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <!--здесь будут данные с джаваскрпта-->
+        <tr>
+          <td colspan="7">Загрузка данных...</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+  <script src="js/common.js"></script>
+  <script src="js/access.js"></script>
+</body>
+</html>
