@@ -7,7 +7,6 @@ from Backend.app.db.session import get_session
 from Backend.app.config import Settings, get_settings
 
 
-
 def get_current_user(
     db: Session = Depends(get_session),
     settings: Settings = Depends(get_settings),
