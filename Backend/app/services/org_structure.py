@@ -1,4 +1,4 @@
-from Backend.app.api.schemas import SyncResult
+from app.api.schemas import SyncResult
 
 
 class OrgStructureSyncService:

@@ -1,4 +1,4 @@
-from Backend.app.api.schemas import OrgSnapshotResponse
+from app.api.schemas import OrgSnapshotResponse
 
 
 class OrgStructureClient:
