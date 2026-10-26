@@ -1,0 +1,78 @@
+[
+  {
+    "id": "i.ivanov",
+    "full_name": "Иванов Иван Иванович",
+    "position": "Backend-разработчик",
+    "phone": "+7 (999) 123-45-67",
+    "email": "i.ivanov@ctdl.ru",
+    "is_active": true,
+    "department_id": "it",
+    "department_title": "ИТ-отдел"
+  },
+  {
+    "id": "p.petrov",
+    "full_name": "Петров Петр Петрович",
+    "position": "Frontend-разработчик",
+    "phone": null,
+    "email": "p.petrov@ctdl.ru",
+    "is_active": true,
+    "department_id": "it",
+    "department_title": "ИТ-отдел"
+  },
+  {
+    "id": "s.sidorova",
+    "full_name": "Сидорова Анна Сергеевна",
+    "position": "HR-менеджер",
+    "phone": "+7 (999) 765-43-21",
+    "email": "s.sidorova@ctdl.ru",
+    "is_active": true,
+    "department_id": "hr",
+    "department_title": "Отдел кадров"
+  },
+  {
+    "id": "k.kuznetsov",
+    "full_name": "Кузнецов Алексей Владимирович",
+    "position": "Генеральный директор",
+    "phone": "+7 (999) 000-00-01",
+    "email": "k.kuznetsov@ctdl.ru",
+    "is_active": true,
+    "department_id": "management",
+    "department_title": "Руководство"
+  },
+  {
+    "id": "m.morozova",
+    "full_name": "Морозова Елена Игоревна",
+    "position": "Бухгалтер",
+    "email": "m.morozova@ctdl.ru",
+    "is_active": true,
+    "department_id": "finance",
+    "department_title": "Бухгалтерия"
+  },
+  {
+    "id": "v.vasiliev",
+    "full_name": "Васильев Дмитрий Олегович",
+    "position": "Системный администратор",
+    "is_active": true,
+    "department_id": "it",
+    "department_title": "ИТ-отдел"
+  },
+  {
+    "id": "n.nikitina",
+    "full_name": "Никитина Ольга Павловна",
+    "position": "Менеджер по продажам",
+    "phone": "+7 (999) 111-22-33",
+    "email": "n.nikitina@ctdl.ru",
+    "is_active": false,
+    "department_id": "sales",
+    "department_title": "Отдел продаж"
+  },
+  {
+    "id": "f.fedorov",
+    "full_name": "Федоров Сергей Николаевич",
+    "position": "Водитель",
+    "phone": "+7 (999) 444-55-66",
+    "is_active": true,
+    "department_id": "logistics",
+    "department_title": "Логистика"
+  }
+]
