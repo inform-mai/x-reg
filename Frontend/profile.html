@@ -10,27 +10,27 @@
 <body>
   <div id="header-placeholder"></div>
   <main>
-    <!-- инфа о пользователе -->
-    <div class="profile-card">
+     <div class="profile-card">
       <h1>Личный кабинет</h1>
       <div class="user-info">
-        <p><strong>ФИО:</strong> <span id="user-name">Админ</span></p>
-        <p><strong>Логин:</strong> <span id="user-email">admin</span></p>
+        <p><strong>ФИО:</strong> <span id="user-name"></span></p>
+        <p><strong>Email:</strong> <span id="user-email"></span></p>
         <p><strong>Роль:</strong> Сотрудник отдела кадров</p>
         <p><strong>Статус:</strong> <span style="color: green;">Активен</span></p>
       </div>
     </div>
-    <!-- имитация формы настроек -->
     <div class="profile-card" style="margin-top: 20px;">
       <h2>Безопасность</h2>
-      <form id="change-password-form">
-        <div style="margin-bottom: 10px;">
+      <form id="change-password-form" novalidate>
+        <div style="margin-bottom: 15px;">
           <label>Текущий пароль:</label><br>
-          <input type="password" placeholder="********" required>
+          <input type="password" id="current-password" placeholder="••••••••">
+          <span id="error-current" style="color: red; font-size: 12px; display: none;"></span>
         </div>
-        <div style="margin-bottom: 10px;">
+        <div style="margin-bottom: 15px;">
           <label>Новый пароль:</label><br>
-          <input type="password" placeholder="********" required>
+          <input type="password" id="new-password" placeholder="••••••••">
+          <span id="error-new" style="color: red; font-size: 12px; display: none;"></span>
         </div>
         <button type="submit">Изменить пароль</button>
       </form>
