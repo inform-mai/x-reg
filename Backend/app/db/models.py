@@ -33,35 +33,72 @@ class ReportAction(str, enum.Enum):
 
 
 class Department(Base):
-    __tablename__ = "departments"
+    """Модель подразделения (отдела) компании. Хранит информацию об оргструктуре."""
+    __tablename__ = "departments"  # Имя таблицы в базе данных
 
+    # Уникальный идентификатор отдела (строковый UUID, первичный ключ)
     id: Mapped[str] = mapped_column(String, primary_key=True)
+
+    # Название отдела (обязательное поле, например: "Отдел разработки", "Бухгалтерия")
     title: Mapped[str] = mapped_column(String, nullable=False)
 
+    # Связь "один ко многим": список всех сотрудников, которые относятся к этому отделу.
+    # Позволяет получать сотрудников через объект отдела (department.employees).
     employees: Mapped[list["Employee"]] = relationship(back_populates="department")
 
 
 class Employee(Base):
-    __tablename__ = "employees"
+    """Модель сотрудника. Содержит личные данные, статусы и связи с другими сущностями."""
+    __tablename__ = "employees"  # Имя таблицы в базе данных
 
+    # Уникальный идентификатор сотрудника (строковый UUID, первичный ключ)
     id: Mapped[str] = mapped_column(String, primary_key=True)
+
+    # ФИО сотрудника (обязательное поле)
     full_name: Mapped[str] = mapped_column(String, nullable=False)
+
+    # Должность сотрудника (необязательное поле, например: "Python-разработчик")
     position: Mapped[str | None] = mapped_column(String)
+
+    # Контактный номер телефона (необязательное поле)
     phone: Mapped[str | None] = mapped_column(String)
+
+    # Рабочая электронная почта (необязательное поле)
     email: Mapped[str | None] = mapped_column(String)
+
+    # Флаг активности: работает ли сотрудник в компании в данный момент.
+    # По умолчанию True. (Уволенные/архивные сотрудники помечаются как False)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+
+    # Статус доступа сотрудника к системам (Enum).
+    # По умолчанию выставляется AccessStatus.need_grant (требуется выдача прав).
     access_status: Mapped[AccessStatus] = mapped_column(
         Enum(AccessStatus, name="access_status"), nullable=False, default=AccessStatus.need_grant
     )
+
+    # Дата и время создания записи о сотруднике в БД.
+    # Заполняется автоматически при создании (UTC).
     created: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=utc_now())
+
+    # Дата и время последнего обновления записи.
+    # Обновляется автоматически при любом изменении данных (UTC).
     updated: Mapped[datetime] = mapped_column(
         DateTime, nullable=False, default=utc_now(), onupdate=utc_now()
     )
+
+    # Внешний ключ (FK) на таблицу departments. Указывает, в каком отделе работает сотрудник.
+    # При удалении или обновлении отдела (CASCADE) изменения каскадно применяются к сотрудникам.
     department_id: Mapped[str] = mapped_column(
         ForeignKey("departments.id", ondelete="CASCADE", onupdate="CASCADE"), nullable=False
     )
 
+    # Связь "многие к одному": объект отдела, к которому привязан сотрудник.
+    # Позволяет получить данные отдела напрямую (employee.department).
     department: Mapped[Department] = relationship(back_populates="employees")
+
+    # Связь "один к одному" с записью в черном списке (Blacklist).
+    # Если сотрудник заблокирован (например, уволен с конфликтом), здесь будет объект Blacklist.
+    # cascade="all, delete-orphan" — если удалить сотрудника, удалится и его запись в ЧС.
     blacklist_entry: Mapped["Blacklist | None"] = relationship(
         back_populates="employee", cascade="all, delete-orphan", uselist=False
     )

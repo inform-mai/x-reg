@@ -2,19 +2,41 @@ import uuid
 from datetime import datetime
 from pydantic import BaseModel, Field
 
-from Backend.app.db.models import AccessStatus, ReportAction, ReportMode
+from app.db.models import AccessStatus, ReportAction, ReportMode
 
 
 class EmployeeRead(BaseModel):
+    """Схема для отдачи данных о сотруднике клиенту (например, при GET-запросах).
+    Содержит расшифрованные (человекочитаемые) статусы."""
+
+    # Идентификатор/логин сотрудника
     id: str = Field(description="Employee login", examples=["i.ivanov"])
+
+    # ФИО сотрудника
     full_name: str = Field(description="Employee full name", examples=["Иванов Иван Иванович"])
+
+    # Должность (может отсутствовать)
     position: str | None = Field(default=None, description="Employee position")
+
+    # Телефон (может отсутствовать)
     phone: str | None = Field(default=None, description="Work phone")
+
+    # Email (может отсутствовать)
     email: str | None = Field(default=None, description="Work email")
+
+    # Текущий флаг активности (работает / уволен)
     is_active: bool = Field(description="Current activity flag")
+
+    # Статус доступа к системам в виде Enum (машиночитаемый формат)
     access_status: AccessStatus = Field(description="Local access status")
+
+    # Человекочитаемый статус доступа (например, "Доступ выдан", "Требуется выдать доступ")
     access_status_title: str = Field(description="Readable access status")
+
+    # Идентификатор отдела
     department_id: str = Field(description="Department id")
+
+    # Название отдела (может отсутствовать, если отдел был удален)
     department_title: str | None = Field(default=None, description="Department title")
 
 
@@ -32,14 +54,33 @@ class BlacklistRequest(BaseModel):
 
 
 class OrgEmployeeSnapshot(BaseModel):
+    """Схема для валидации входящих данных снимка оргструктуры.
+    Используется в ручке /org-structure/snapshot для загрузки списка сотрудников."""
+
+    # Уникальный идентификатор/логин сотрудника в системе (например, "i.ivanov")
     id: str = Field(min_length=1, description="Employee login", examples=["i.ivanov"])
+
+    # Полное ФИО сотрудника
     full_name: str = Field(min_length=1, description="Employee full name", examples=["Иванов Иван Иванович"])
+
+    # Должность сотрудника (необязательное поле)
     position: str | None = Field(default=None, description="Employee position", examples=["Инженер"])
+
+    # Рабочий номер телефона (необязательное поле)
     phone: str | None = Field(default=None, description="Work phone", examples=["+7 (999) 123-45-67"])
+
+    # Рабочая электронная почта (необязательное поле)
     email: str | None = Field(default=None, description="Work email", examples=["i.ivanov@ctdl.ru"])
+
+    # Флаг активности сотрудника (по умолчанию True, то есть сотрудник работает)
     is_active: bool = Field(default=True, description="Whether employee is active")
-    # --- возможно выпилить
+
+    # - Возможно выпилить (комментарий из исходного кода) ---
+
+    # Идентификатор отдела, к которому относится сотрудник (например, "it")
     department_id: str = Field(min_length=1, description="Department id", examples=["it"])
+
+    # Название отдела (передается вместе с ID, чтобы при необходимости создать отдел, если его нет)
     department_title: str = Field(min_length=1, description="Department title", examples=["ИТ"])
 
 
