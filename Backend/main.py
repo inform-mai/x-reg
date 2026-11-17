@@ -7,12 +7,11 @@ from app.core.logger import setup_logging
 
 __all__ = ["app", "create_app"]
 
-# Инициализируем настройку логов
-setup_logging()
 
 if __name__ == "__main__":
     settings = get_settings()
     init_db()
+    setup_logging()
     config = uvicorn.Config(
         "app.api.app:create_app",
         factory=True,

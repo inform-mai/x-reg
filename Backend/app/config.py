@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     api_host: str = "0.0.0.0"
     api_port: int = 8159
 
+    log_dir: str = "logs"
+
 
 @lru_cache
 def get_settings() -> Settings:

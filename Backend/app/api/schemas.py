@@ -24,7 +24,7 @@ class EmployeeRead(BaseModel):
     # Email (может отсутствовать)
     email: str | None = Field(default=None, description="Work email")
 
-    # Текущий флаг активности (работает / уволен)
+    # Текущий флаг активности
     is_active: bool = Field(description="Current activity flag")
 
     # Статус доступа к системам в виде Enum (машиночитаемый формат)
@@ -75,7 +75,6 @@ class OrgEmployeeSnapshot(BaseModel):
     # Флаг активности сотрудника (по умолчанию True, то есть сотрудник работает)
     is_active: bool = Field(default=True, description="Whether employee is active")
 
-    # - Возможно выпилить (комментарий из исходного кода) ---
 
     # Идентификатор отдела, к которому относится сотрудник (например, "it")
     department_id: str = Field(min_length=1, description="Department id", examples=["it"])
