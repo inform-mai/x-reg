@@ -1,6 +1,6 @@
-from Backend.app.db.repo import ReportRepo, utc_now
-from Backend.app.services.pdf import PdfReportRenderer
-from Backend.app.db.models import Report, ReportMode, User
+from app.db.repo import ReportRepo, utc_now
+from app.services.pdf import PdfReportRenderer
+from app.db.models import Report, ReportMode, User
 
 from datetime import date
 

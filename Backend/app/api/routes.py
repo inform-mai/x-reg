@@ -4,16 +4,16 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Body, Depends, HTTPException, Path, Query, Response, status
 from fastapi.responses import StreamingResponse
 
-from Backend.app.db.session import get_session
-from Backend.app.api.deps import get_current_user
-from Backend.app.db.models import AccessStatus, User
-from Backend.app.config import Settings, get_settings
-from Backend.app.services.reports import ReportService
-from Backend.app.db.repo import EmployeeRepo, ReportRepo
-from Backend.app.services.org_structure import OrgStructureSyncService
-from Backend.app.services.org_structure_client import OrgStructureClient
-from Backend.app.api.mappers import employee_to_schema, report_to_details, report_to_schema
-from Backend.app.api.schemas import (
+from app.db.session import get_session
+from app.api.deps import get_current_user
+from app.db.models import AccessStatus, User
+from app.config import Settings, get_settings
+from app.services.reports import ReportService
+from app.db.repo import EmployeeRepo, ReportRepo
+from app.services.org_structure import OrgStructureSyncService
+from app.services.org_structure_client import OrgStructureClient
+from app.api.mappers import employee_to_schema, report_to_details, report_to_schema
+from app.api.schemas import (
     BlacklistRequest,
     EmployeeListResponse,
     OrgEmployeeSnapshot,
@@ -22,7 +22,7 @@ from Backend.app.api.schemas import (
     ReportRead,
     SyncResult,
 )
-from Backend.app.services.errors import (
+from app.services.errors import (
     PdfRenderError,
     OrgStructureClientError,
     NotFoundError,
