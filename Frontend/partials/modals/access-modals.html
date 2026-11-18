@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--модальное окно: исключить -->
+<div id="modal-blacklist" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Исключить сотрудника</h2>
+    <p>Вы уверены, что хотите исключить <strong id="modal-blacklist-name"></strong>?</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel">Отмена</button>
+      <button type="button" class="btn-confirm" data-action="blacklist">Исключить</button>
+    </div>
+  </div>
+</div>
+
+<!--модальное окно:вернуть -->
+<div id="modal-restore" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Вернуть доступ</h2>
+    <p>Восстановить доступ для <strong id="modal-restore-name"></strong>?</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel">Отмена</button>
+      <button type="button" class="btn-confirm" data-action="restore">Вернуть</button>
+    </div>
+  </div>
+</div>
+
+<!--модальное окно: удалить -->
+<div id="modal-delete" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Удалить запись</h2>
+    <p>Вы уверены, что хотите безвозвратно удалить запись?</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel">Отмена</button>
+      <button type="button" class="btn-confirm" data-action="delete">Удалить</button>
+    </div>
+  </div>
+</div>
+
+<!-- модальное окно: добавить -->
+<div id="modal-add" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Добавить доступ</h2>
+    <p>Выдать доступ для <strong id="modal-add-name"></strong>?</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel">Отмена</button>
+      <button type="button" class="btn-confirm" data-action="add">Добавить</button>
+    </div>
+  </div>
+</div>
+
+<!-- модальное окно: список для допуска (пока заглушка) -->
+<div id="modal-allow-list" class="modal" style="display: none;">
+  <div class="modal-content">
+    <h2>Список для допуска</h2>
+    <p>Здесь будет список сотрудников, допущенных к системе (в разработке).</p>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel">Закрыть</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
