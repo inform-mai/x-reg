@@ -13,17 +13,18 @@
     <main>
     <h1>Списки сотрудников</h1>
     <div>
+      <button class="btn-secondary" id="btn-allow-list">Список для допуска</button>
       <button class="btn-download">Скачать</button>
     </div>
     <div class="filters">
-      <button class="filter-btn active">Все</button>
-      <button class="filter-btn">Актуальная УЗ</button>
-      <button class="filter-btn">Прием</button>
-      <button class="filter-btn">Отзыв</button>
-      <button class="filter-btn">Отозвана</button>
-      <button class="filter-btn">Исключен</button>
+      <button class="filter-btn active" data-status="">Все</button>
+      <button class="filter-btn" data-status="actual">Актуальная УЗ</button>
+      <button class="filter-btn" data-status="need_grant">Прием</button>
+      <button class="filter-btn" data-status="need_revoke">Отзыв</button>
+      <button class="filter-btn" data-status="revoked">Отозвана</button>
+      <button class="filter-btn" data-status="blacklisted">Исключен</button>
     </div>
-    <input type="text" placeholder="Поиск">
+    <input type="text" id="search-input" placeholder="Поиск">
     <table>
       <thead>
         <tr>
@@ -44,6 +45,8 @@
       </tbody>
     </table>
   </main>
+  <div id="modals-placeholder"></div>
+
   <script src="js/common.js"></script>
   <script src="js/access.js"></script>
 </body>
