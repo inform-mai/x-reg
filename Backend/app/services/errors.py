@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 
 
-class ServiceError(Exception, HTTPException):
+class ServiceError(Exception):
     code = 400
 
     def __init__(self, detail: str):

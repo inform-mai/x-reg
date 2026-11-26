@@ -1,7 +1,7 @@
 import logging
 import sys
 from logging.handlers import RotatingFileHandler
-from app.config import get_settings
+from ..config import get_settings
 import os
 
 

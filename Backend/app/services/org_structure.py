@@ -1,4 +1,4 @@
-from app.api.schemas import SyncResult
+import logging
 
 from Backend.app.api.schemas import OrgEmployeeSnapshot, SyncResult
 from Backend.app.db.models import AccessStatus, Employee

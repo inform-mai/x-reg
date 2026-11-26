@@ -4,7 +4,7 @@
     "full_name": "Иванов Иван Иванович",
     "position": "Backend-разработчик",
     "phone": "+7 (999) 123-45-67",
-    "email": "i.ivanov@ctdl.ru",
+    "email": "i.ivanov@email.ru",
     "is_active": true,
     "department_id": "it",
     "department_title": "ИТ-отдел"
@@ -14,7 +14,7 @@
     "full_name": "Петров Петр Петрович",
     "position": "Frontend-разработчик",
     "phone": null,
-    "email": "p.petrov@ctdl.ru",
+    "email": "p.petrov@email.ru",
     "is_active": true,
     "department_id": "it",
     "department_title": "ИТ-отдел"
@@ -24,7 +24,7 @@
     "full_name": "Сидорова Анна Сергеевна",
     "position": "HR-менеджер",
     "phone": "+7 (999) 765-43-21",
-    "email": "s.sidorova@ctdl.ru",
+    "email": "s.sidorova@emial.ru",
     "is_active": true,
     "department_id": "hr",
     "department_title": "Отдел кадров"
@@ -34,7 +34,7 @@
     "full_name": "Кузнецов Алексей Владимирович",
     "position": "Генеральный директор",
     "phone": "+7 (999) 000-00-01",
-    "email": "k.kuznetsov@ctdl.ru",
+    "email": "k.kuznetsov@email.ru",
     "is_active": true,
     "department_id": "management",
     "department_title": "Руководство"
@@ -43,7 +43,7 @@
     "id": "m.morozova",
     "full_name": "Морозова Елена Игоревна",
     "position": "Бухгалтер",
-    "email": "m.morozova@ctdl.ru",
+    "email": "m.morozova@email.ru",
     "is_active": true,
     "department_id": "finance",
     "department_title": "Бухгалтерия"
@@ -61,7 +61,7 @@
     "full_name": "Никитина Ольга Павловна",
     "position": "Менеджер по продажам",
     "phone": "+7 (999) 111-22-33",
-    "email": "n.nikitina@ctdl.ru",
+    "email": "n.nikitina@email.ru",
     "is_active": false,
     "department_id": "sales",
     "department_title": "Отдел продаж"
