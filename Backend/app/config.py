@@ -15,10 +15,6 @@ class Settings(BaseSettings):
     dev_user_email: str = "admin"
     dev_user_full_name: str = "Админ"
 
-    org_structure_base_url: str | None = None
-    org_structure_token: str | None = None
-    org_structure_timeout_seconds: float = 60.0
-
     api_host: str = "0.0.0.0"
     api_port: int = 8159
 
